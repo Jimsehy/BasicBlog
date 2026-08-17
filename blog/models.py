@@ -23,7 +23,7 @@ class Post(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
     snippet = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(User, related_name='Likes', blank=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
 
     def __str__(self):
         return self.title
