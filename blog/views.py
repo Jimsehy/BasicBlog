@@ -8,6 +8,7 @@ def home(request):
     return render(request, 'blog/home.html')
 
 def categories(request):
+    categories = Category.objects.all()
     return render(request,
                   'blog/categories.html',
                   {'categories': categories})
