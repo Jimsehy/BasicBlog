@@ -6,5 +6,11 @@ Categories
 <h1>Categories</h1>
     {% for category in categories %}
     <p>{{ category.name }}</p>
+        {% for post in category.posts_set.all %}
+            <p>{{ post.title }}</p>
+            {% for comment in post.comments.all %}
+                <p>{{ comment.text }}</p>
+            {% endfor %}
+        {% endfor %}
     {% endfor %}
 {% endblock %}

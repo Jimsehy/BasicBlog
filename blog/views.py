@@ -10,5 +10,4 @@ def home(request):
 def categories(request):
     return render(request,
                   'blog/categories.html',
-                  {'categories': Category},
-                  name='categories')
+                  {'categories': categories})
