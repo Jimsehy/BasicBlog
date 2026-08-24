@@ -9,6 +9,11 @@
         <input type="text" name="name" placeholder="Category Name">
         <button type="submit">Create</button>
     </form>
+    <form action="{% url 'post_create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Post Name">
+        <button type="submit">Create post</button>
+    </form>
     {% for category in categories %}
         <p>
             <a href="{% url 'category_detail' category.id %}">
@@ -31,6 +36,16 @@
             {{ post.title }}
             </a>
             </p>
+            <form action="{% url 'post_update' post.id %}" method="post">
+                {% csrf_token %}
+            <input type="text" name="name" value="{{ post.title }}">
+            <button type="submit">Update Post</button>
+            </form>
+            <form action="{% url 'post_delete' %}" method="post">
+                {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <button type="submit">Delete post</button>
+            </form>
             <p>Likes: {{ post.likes.count}}</p>
             {%  for comment in post.comment_set.all %}
                 <p>{{ comment.body }}</p>

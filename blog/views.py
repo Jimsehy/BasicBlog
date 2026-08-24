@@ -15,9 +15,14 @@ def categories(request):
 
 def posts(request):
     posts = Post.objects.all()
+    from django.contrib.auth.models import User
+    users = User.objects.all()
+    categories = Category.objects.all()
     return render(request,
                   'blog/posts.html',
-                  {'posts': posts})
+                  {'posts': posts,
+                   'users': users,
+                   'categories': categories})
 
 def category_detail(request, category_id):
     category = Category.objects.get(id=category_id)
@@ -47,3 +52,27 @@ def category_delete(request):
     category = Category.objects.get(id=category_id)
     category.delete()
     return redirect('categories')
+
+def post_create(request):
+    title = request.POST['title']
+    header_image = request.POST['header_image']
+    title_tag = request.POST['title_tag']
+    author = request.POST['author']
+    body = request.POST['body']
+    snippet = request.POST['snippet']
+    category = request.POST['category']
+    post_name = request.POST['name']
+    post = Post.objects.create(title=title, header_image=header_image, title_tag=title_tag, author=author, body=body, snippet=snippet, category=category, name=post_name)
+    return redirect('posts')
+
+def post_update(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.name = request.POST['name']
+    post.save()
+    return redirect('posts')
+
+def post_delete(request):
+    post_id = request.POST['post_id']
+    post = Category.objects.get(id=post_id)
+    post.delete()
+    return redirect('posts')
