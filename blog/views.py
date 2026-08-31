@@ -33,7 +33,7 @@ def category_detail(request, category_id):
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     return render(request,
-                  'blog/category_detail.html',
+                  'blog/post_detail.html',
                   {'post': post})
 
 def category_create(request):
