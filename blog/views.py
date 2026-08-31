@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 
 from blog.models import Category, Post
 
@@ -105,5 +105,11 @@ class PostDetail_GenericView(DetailView):
 class PostCreateView(CreateView):
     model = Post
     template_name = 'blog/posts_create_view.html'
+    success_url = '/posts_list_view/'
+    fields = ['title', 'header_image', 'title_tag', 'author', 'body', 'snippet', 'category']
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = 'blog/posts_update_view.html'
     success_url = '/posts_list_view/'
     fields = ['title', 'header_image', 'title_tag', 'author', 'body', 'snippet', 'category']

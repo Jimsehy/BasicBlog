@@ -12,6 +12,10 @@
         <a href="{% url 'posts_detail_view' post.pk %}">
             {{ post.title }}
         </a>
+            <a>|</a>
+        <a href="{% url 'posts_update_view' post.pk %}">
+            Update
+        </a>
         <br>
         {% endfor %}
     </p>
