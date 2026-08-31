@@ -9,15 +9,15 @@
     </h1>
     <p>
         {% for post in object_list %}
-        <a href="{% url 'posts_detail_view' post.pk %}">
+        <a class="btn btn-success" href="{% url 'posts_detail_view' post.pk %}">
             {{ post.title }}
         </a>
             <a>|</a>
-        <a href="{% url 'posts_update_view' post.pk %}">
+        <a class="btn btn-primary" href="{% url 'posts_update_view' post.pk %}">
             Update
         </a>
             <a>|</a>
-        <a href="{% url 'posts_delete_view' post.pk %}">
+        <a class="btn btn-danger" href="{% url 'posts_delete_view' post.pk %}">
             Delete
         </a>
         <br>
