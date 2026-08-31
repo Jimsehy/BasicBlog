@@ -16,6 +16,10 @@
         <a href="{% url 'posts_update_view' post.pk %}">
             Update
         </a>
+            <a>|</a>
+        <a href="{% url 'posts_delete_view' post.pk %}">
+            Delete
+        </a>
         <br>
         {% endfor %}
     </p>
