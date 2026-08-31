@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+
 from blog.models import Category, Post
 
 
@@ -76,3 +78,12 @@ def post_delete(request):
     post = Category.objects.get(id=post_id)
     post.delete()
     return redirect('posts')
+
+
+class PostList(TemplateView):
+    template_name = 'blog/posts_template_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all()
+        return context
