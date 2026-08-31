@@ -1,0 +1,18 @@
+{% extends "blog/Base.html" %}
+{% block title %}
+	Posts List View
+{% endblock %}
+
+{% block content %}
+	<h1>
+        Post List View
+    </h1>
+    <p>
+        {% for post in object_list %}
+        <a href="{% url 'posts_detail_view' post.pk %}">
+            {{ post.title }}
+        </a>
+        <br>
+        {% endfor %}
+    </p>
+{% endblock %}

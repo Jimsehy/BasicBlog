@@ -1,0 +1,19 @@
+{% extends "blog/Base.html" %}
+{% block title %}
+	Posts Detail View
+{% endblock %}
+
+{% block content %}
+	<h1>
+        Post Detail View
+    </h1>
+    <p>
+        {{ object.title }}
+    </p>
+    <p>
+        {{ object.body }}
+    </p>
+    <p>
+        {{ object.snippet }}
+    </p>
+{% endblock %}
